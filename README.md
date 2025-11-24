@@ -1,4 +1,4 @@
-## InterviewMate – AI-Powered Mock Interview Partner
+## InterviewMate – AI-Powered Mock Interview Partner 🤖 
 
 RAG-Enhanced, Role-Aware, Voice-Driven Interview Simulator
 
@@ -52,79 +52,33 @@ RAG-Enhanced, Role-Aware, Voice-Driven Interview Simulator
 | **Styling / UI** | Custom CSS | Creates a dark, modern, interview-themed interface. | Fully customizable, lightweight, and visually clean. |
 | **Package/Environment** | Python 3.12, pip, virtualenv | Core environment for backend logic. | Ensures clean reproducibility and package isolation. |
 
-## ⚙️ How to Run the Project
+## How to Run the Project ⚙️ 
 
-### 📌 Prerequisites
+**📌 Prerequisites** 
 - Python 3.10+
 - FFmpeg installed
 - OpenAI API Key configured in `backend/config.py`
 
-### **1️⃣ Start the FastAPI Backend**
+**1️⃣ Start the FastAPI Backend**
 ```bash
 cd backend
 uvicorn app:app --host 127.0.0.1 --port 8001 --reload
 ```
 
-### **2️⃣ Start the Django Frontend**
+**2️⃣ Start the Django Frontend**
 ```bash
 cd frontend
 python manage.py runserver
 ```
 
-## 🌐 Local Server URLs
-Frontend: http://127.0.0.1:8000
-Backend: http://127.0.0.1:8001
+**🌐 Local Server URLs**
+- Frontend: http://127.0.0.1:8000
+- Backend: http://127.0.0.1:8001
 
 ## End-to-end data flow
-```bash
+![alt text](diag.png)
 
-INITIALIZATION                    INTERVIEW LOOP (Repeats)                           COMPLETION
-━━━━━━━━━━━━━━                    ━━━━━━━━━━━━━━━━━━━━━━━━━━                           ━━━━━━━━━━━━
-
-┌──────┐    ┌────────┐    ┌──────────┐    ┌─────────┐    ┌────────┐    ┌──────────┐    ┌─────────┐    ┌────────┐
-│ User │───▶│ Django │───▶│ FastAPI  │───▶│ Browser │───▶│ Record │───▶│  Django  │───▶│ FastAPI │───▶│Browser │
-│ Form │    │ /start │    │ Build RAG│    │ Show Q  │    │ Audio  │    │ /submit  │    │ Process │    │ Update │
-└──────┘    └────────┘    │ Gen Q1   │    └─────────┘    └────────┘    └──────────┘    └────┬────┘    └───┬────┘
-                          └──────────┘                                                        │              │
-                                                                                              │              │
-                                                     ┌────────────────────────────────────────┘              │
-                                                     │                                                       │
-                                                     ▼                                                       │
-                                         ┌──────────────────────────┐                                       │
-                                         │   FastAPI Processing:    │                                       │
-                                         │   • Whisper (transcribe) │                                       │
-                                         │   • FAISS (RAG search)   │                          ┌────────────┘
-                                         │   • Detect behavior      │                          │
-                                         │   • LLM evaluation       │                          │
-                                         └──────────────────────────┘                          ▼
-                                                                                         ┌──────────┐
-                                         ┌──────────────────────────┐                   │ Max Q or │
-                                         │    DECISION POINT        │                   │ User End?│
-                                         │  Continue? ◀─────────────┼───────────────────┤          │
-                                         │  Yes → Loop Back         │         NO        └─────┬────┘
-                                         │  No → Final Feedback     │                         │ YES
-                                         └──────────────────────────┘                         ▼
-                                                                                         ┌──────────┐
-                                                                                         │ FastAPI  │
-                                                                                         │ Generate │
-                                                                                         │ Report   │
-                                                                                         └─────┬────┘
-                                                                                               │
-                                                                                               ▼
-                                                                                         ┌──────────┐
-                                                                                         │  Django  │
-                                                                                         │/feedback │
-                                                                                         └─────┬────┘
-                                                                                               │
-                                                                                               ▼
-                                                                                         ┌──────────┐
-                                                                                         │ Display  │
-                                                                                         │ Results  │
-                                                                                         └──────────┘
-```
-
-## 🧠 Persona & Edge-Case Handling
-
+## Persona & Edge-Case Handling
 | Category | What Happens | Agent Behavior |
 |---------|--------------|----------------|
 | **Role-Based Persona** | Adjusts tone, depth & technicality based on role/JD | Questions become job-specific and aligned to JD |
@@ -137,3 +91,11 @@ INITIALIZATION                    INTERVIEW LOOP (Repeats)                      
 | **Bad Transcription** | Whisper mishears speech | Asks user to repeat clearly |
 | **JD-Specific Enforcement** | Answer unrelated to role/JD | Marks evaluation as [OFFTOPIC] + redirects |
 
+## 🚀 Future Enhancements (Short & Impactful)
+- Live video interview mode with body-language and attention analysis.
+- Integrated coding + system design rounds with automated scoring.
+- Performance charts (radar, timeline, bar, and trend graphs).
+- Emotion & tone detection using vocal intensity and pause analysis.
+- ATS-style resume scoring with keyword and skills-gap analysis.
+- Multi-round realistic interview flow (HR, Technical, Managerial).
+- Company-specific interview modes (Google, Amazon, Meta, etc.).
