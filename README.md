@@ -61,22 +61,29 @@ RAG-Enhanced, Role-Aware, Voice-Driven Interview Simulator
 
 ---
 
-### **1️⃣ Start the FastAPI Backend**
-```bash
+## ### **1️⃣ Start the FastAPI Backend**
+
+## ```bash
+
 cd backend
+
 uvicorn app:app --host 127.0.0.1 --port 8001 --reload
-bash```
 
-### **2️⃣ Start the Django Frontend**
-```bash
-cd frontend
-python manage.py runserver
+## bash```
 
-###🌐 Local Server URLs
+## ### **2️⃣ Start the Django Frontend**
 
-Frontend: http://127.0.0.1:8000
+## ```bash
 
-Backend: http://127.0.0.1:8001
+## cd frontend
+
+## python manage.py runserver
+
+## ###🌐 Local Server URLs
+
+Frontend: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+Backend: [http://127.0.0.1:8001](http://127.0.0.1:8001)
 
 
 INITIALIZATION                    INTERVIEW LOOP (Repeats)                           COMPLETION
