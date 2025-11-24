@@ -18,10 +18,10 @@
 **🧠 JD-Driven, Role-Specific Questioning (RAG-Powered)**
 - Uses FAISS + OpenAI embeddings to extract relevant requirements from the Job Description.
 - Interview questions dynamically adjust to: 
-    Role (e.g., SWE, Data Analyst, PM)
-    Level (Intern or senior lead)
-    Technical focus (backend, ML, system design, etc.)
-    No hard-coded questions — all LLM-generated in real-time.
+    - Role (e.g., SWE, Data Analyst, PM)
+    - Level (Intern, Associate, Senior lead)
+    - Technical focus (backend, ML, system design, etc.)
+    - No hard-coded questions — all LLM-generated in real-time.
 
  **🤖 Agentic Behaviors** 
 - Recognizes irrelevant answers and redirects politely.
