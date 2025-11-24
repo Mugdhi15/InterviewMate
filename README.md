@@ -1,6 +1,6 @@
 ## InterviewMate – AI-Powered Mock Interview Partner 🤖 
 
-RAG-Enhanced, Role-Aware, Voice-Driven Interview Simulator
+(RAG-Enhanced, Role-Aware, Voice-Driven Interview Simulator)
 
 - InterviewMate is an advanced AI-driven mock interview system designed to replicate real hiring-style conversations across different roles, levels, and company expectations.
 
@@ -91,7 +91,7 @@ python manage.py runserver
 | **Bad Transcription** | Whisper mishears speech | Asks user to repeat clearly |
 | **JD-Specific Enforcement** | Answer unrelated to role/JD | Marks evaluation as [OFFTOPIC] + redirects |
 
-## 🚀 Future Enhancements (Short & Impactful)
+## 🚀 Future Enhancements 
 - Live video interview mode with body-language and attention analysis.
 - Integrated coding + system design rounds with automated scoring.
 - Performance charts (radar, timeline, bar, and trend graphs).
