@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+faster-whisper
+pyttsx3
+requests
+python-multipart
+soundfile
+scipy
+openai
+faiss-cpu

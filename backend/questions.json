@@ -1,0 +1,27 @@
+{
+  "Software Engineer": [
+    "Tell me about a challenging bug you fixed recently.",
+    "Explain how an API works in simple terms.",
+    "Design a basic URL shortener. What components are needed?",
+    "How do you ensure code quality when working in a team?",
+    "Describe a time when your code caused a production issue. How did you handle it?"
+  ],
+  "HR": [
+    "Describe a conflict you resolved at work or college.",
+    "How do you prioritize tasks when you have too many responsibilities?",
+    "How do you give constructive feedback to a teammate?",
+    "Talk about a time you motivated a team."
+  ],
+  "Sales": [
+    "Sell me this pen.",
+    "How do you handle customer objections?",
+    "Describe a time you converted a difficult lead.",
+    "How do you build long-term customer relationships?"
+  ],
+  "Retail Associate": [
+    "How would you handle a shoplifter politely but effectively?",
+    "Describe a time you improved customer satisfaction.",
+    "How do you keep the store organized during rush hours?",
+    "What would you do if a customer is angry or shouting?"
+  ]
+}

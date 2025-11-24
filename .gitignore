@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# pipenv
+Pipfile.lock
+
+# Poetry
+poetry.lock
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Django / databases / media
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+*.log
+
+# Environment / secrets
+.env
+.env.* 
+secrets.json
+config.py
+*.pem
+*.key
+
+# Node / frontend
+node_modules/
+npm-debug.log
+yarn-error.log
+build/
+dist/
+
+# Mac / Windows
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter
+.ipynb_checkpoints
+*.ipynb
+
+# Logs
+*.log
+
+# FAISS, large models, datasets (don't include big binaries)
+models/
+*.bin
+*.pt
+*.onnx
+*.ckpt
+lfs-media/
+
+# Git LFS placeholder (if used)
+.gitattributes
+
+# Optional: exclude local test media
+/tests/output/

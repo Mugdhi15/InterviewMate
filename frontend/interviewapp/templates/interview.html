@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interview</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+</head>
+<body>
+
+<div class="sidebar">
+    <h3 class="sidebar-title">Session Progress</h3>
+    <div id="progress-bar-wrapper"> 
+        <div id="progress-bar"></div>
+    </div>
+    
+    <div class="sidebar-info">
+        Questions Asked: <span id="questions-count">0</span> / <span id="max-questions">~</span>
+    </div>
+
+    <h3 class="sidebar-title">Time Remaining</h3>
+    <div id="timer">00:00</div> 
+    
+    <div class="sidebar-info">
+        Role: <span id="session-role">{{ role }}</span>
+    </div>
+
+
+    <div style="margin-top:20px;">
+        <div class="sidebar-info">Confidence:</div>
+        <div class="confidence-meter" title="Confidence (relevance to JD)">
+            <div id="confidence-fill"></div>
+        </div>
+        <div id="confidence-label" class="sidebar-info" style="margin-top:6px;">—</div>
+    </div>
+</div>
+
+<div class="container">
+
+    <h2 class="section-title">Interviewer</h2>
+
+    <div id="question-box">
+        <input type="hidden" id="session_mode_input" value="{{ session_mode }}"> 
+        <p>{{ question }}</p>
+    </div>
+
+    <div id="interviewer-note" class="interviewer-note" style="display:none;"></div>
+    <div id="hesitation-warning" class="hesitation-warning" style="display:none;"></div>
+    <div id="offtopic-box" class="offtopic-box" style="display:none;"></div>
+
+    <button id="speak-btn" onclick="toggleSpeech()">🔊 Speak Question</button>
+
+    <h2 class="section-title">Record Your Answer</h2>
+
+    <div class="recording-container">
+        
+        <div class="rec-left">
+            <div id="recording-status" class="sidebar-info">Ready.</div>
+
+            <button id="startRec" class="rec-btn primary-btn">Start Recording</button>
+            <button id="stopRec" class="rec-btn secondary-btn" disabled>Stop Recording</button>
+        </div>
+
+        <div class="rec-right">
+            <div id="volume-bars"></div>
+        </div>
+
+    </div>
+
+    <div id="waveform"></div>
+    
+    <form id="submit-form" action="/submit_answer/" method="POST" onsubmit="handleFormSubmit(event)">
+        {% csrf_token %}
+        <input type="hidden" id="audio_input" name="audio_data" />
+        
+        <input type="hidden" id="session_id_input" name="session_id" value="{{ session_id }}" /> 
+
+        <button type="submit" id="submit-btn" disabled>Submit Answer</button>
+    </form>
+
+    <button id="endInterviewBtn" class="primary-btn" style="margin-top: 20px; width: 100%;">End Interview</button>
+
+
+
+</div>
+
+<script src="/static/js/recorder.js"></script>
+<script src="/static/js/waveform.js"></script>
+<script src="/static/js/timer.js"></script>
+<script src="/static/js/interview.js"></script>
+
+<script>
+// NOTE: We moved the startTimer call into interview.js to use dynamic values.
+</script>
+
+</body>
+</html>

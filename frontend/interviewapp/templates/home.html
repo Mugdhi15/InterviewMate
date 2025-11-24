@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>InterviewBot</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🎤 AI Interview Practice Partner</h1>
+    <p>Define your session to start a personalized mock interview.</p>
+
+    <form method="POST" action="/start_session/">
+        {% csrf_token %}
+
+        <label for="role">Select Interview Role</label>
+        <select name="role" id="role" required>
+            <option value="Software Engineer">Software Engineer</option>
+            <option value="Data Analyst">Data Analyst</option>
+            <option value="HR">HR Specialist</option>
+            <option value="Sales">Sales Manager</option>
+            <option value="Custom JD">Custom JD (Required below)</option>
+        </select>
+        
+        <label for="level">Select Experience Level</label>
+        <select name="level" id="level" required>
+            <option value="Entry-Level">Entry-Level / Intern</option>
+            <option value="Mid-Level">Mid-Level / Associate</option>
+            <option value="Senior">Senior / Lead</option>
+        </select>
+
+        <label for="focus">Question Focus Type</label>
+        <select name="focus" id="focus" required>
+            <option value="Mix">Mix of Technical & Behavioral (Recommended)</option>
+            <option value="Technical">Strictly Technical / Domain Specific</option>
+            <option value="Behavioral">Strictly Behavioral / STAR Method</option>
+        </select>
+        
+        <label for="mode">Interview Mode & Duration</label>
+        <select name="mode" id="mode" required>
+            <option value="Quick|15">Quick Prep (Approx. 15 mins / 5-6 questions)</option>
+            <option value="Detailed|30">Detailed Session (Approx. 30 mins / 10-12 questions)</option>
+            <option value="Long|60">Long Marathon (Approx. 60 mins / 20+ questions)</option>
+        </select>
+
+        <label for="jd_text">Job Description (Optional, required for 'Custom JD')</label>
+        <textarea name="jd_text" id="jd_text" placeholder="Paste Job Description for highly specific questions..."></textarea>
+
+        <button type="submit">Start Interview</button>
+    </form>
+
+</div>
+
+</body>
+</html>
