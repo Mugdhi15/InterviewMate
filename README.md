@@ -59,32 +59,24 @@ RAG-Enhanced, Role-Aware, Voice-Driven Interview Simulator
 - FFmpeg installed
 - OpenAI API Key configured in `backend/config.py`
 
----
-
-## ### **1️⃣ Start the FastAPI Backend**
-
-## ```bash
-
+### **1️⃣ Start the FastAPI Backend**
+```bash
 cd backend
-
 uvicorn app:app --host 127.0.0.1 --port 8001 --reload
+```
 
-## bash```
+### **2️⃣ Start the Django Frontend**
+```bash
+cd frontend
+python manage.py runserver
+```
 
-## ### **2️⃣ Start the Django Frontend**
+## 🌐 Local Server URLs
+Frontend: http://127.0.0.1:8000
+Backend: http://127.0.0.1:8001
 
-## ```bash
-
-## cd frontend
-
-## python manage.py runserver
-
-## ###🌐 Local Server URLs
-
-Frontend: [http://127.0.0.1:8000](http://127.0.0.1:8000)
-
-Backend: [http://127.0.0.1:8001](http://127.0.0.1:8001)
-
+## End-to-end data flow
+```bash
 
 INITIALIZATION                    INTERVIEW LOOP (Repeats)                           COMPLETION
 ━━━━━━━━━━━━━━                    ━━━━━━━━━━━━━━━━━━━━━━━━━━                           ━━━━━━━━━━━━
@@ -129,60 +121,19 @@ INITIALIZATION                    INTERVIEW LOOP (Repeats)                      
                                                                                          │ Display  │
                                                                                          │ Results  │
                                                                                          └──────────┘
+```
 
-## Edge case Handling
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Behavior</th>
-      <th>Agent Response</th>
-    </tr>
-  </thead>
+## 🧠 Persona & Edge-Case Handling
 
-  <tbody>
+| Category | What Happens | Agent Behavior |
+|---------|--------------|----------------|
+| **Role-Based Persona** | Adjusts tone, depth & technicality based on role/JD | Questions become job-specific and aligned to JD |
+| **Hesitant User** | Fillers like “uh”, “umm”, pauses | Acknowledges gently → asks for clarity or detail |
+| **Chatty / Off-Topic User** | Long stories, irrelevant context | Politely redirects back to the question |
+| **Confused User** | Doesn’t know what to answer | Gives structured guidance options (no hints/answers) |
+| **Short / Weak Answers** | 3–5 word responses | Asks for concrete examples or specifics |
+| **Beyond Capability Queries** | Jokes, career tips, unrelated topics | States limits → anchors back to interview flow |
+| **Contradictory Answers** | Inconsistent statements | Highlights mismatch → requests clarification |
+| **Bad Transcription** | Whisper mishears speech | Asks user to repeat clearly |
+| **JD-Specific Enforcement** | Answer unrelated to role/JD | Marks evaluation as [OFFTOPIC] + redirects |
 
-    <tr>
-      <td><b>Role-Based Persona</b></td>
-      <td>Questions adapt to role, level, JD context via RAG.</td>
-      <td>“Based on the JD, could you explain how you'd handle X?”</td>
-    </tr>
-
-    <tr>
-      <td><b>Hesitant User</b></td>
-      <td>Detects fillers/pauses & encourages clarity.</td>
-      <td>“Take your time—walk me through your thought process.”</td>
-    </tr>
-
-    <tr>
-      <td><b>Off-Topic User</b></td>
-      <td>Marks evaluation with <code>[OFFTOPIC]</code> and redirects politely.</td>
-      <td>“Interesting, but let’s come back to the main question—can you clarify Y?”</td>
-    </tr>
-
-    <tr>
-      <td><b>Chatty / Story-Drift</b></td>
-      <td>Acknowledges story, gently redirects.</td>
-      <td>“Thanks for sharing—now focusing on the question, what was your key decision?”</td>
-    </tr>
-
-    <tr>
-      <td><b>Confused User</b></td>
-      <td>Provides minimal guidance options without leaking answers.</td>
-      <td>“To narrow it down, you can talk about tools, strategy, or constraints.”</td>
-    </tr>
-
-    <tr>
-      <td><b>Weak / Short Responses</b></td>
-      <td>Low confidence score → asks for expansion.</td>
-      <td>“Could you add a concrete example to support that?”</td>
-    </tr>
-
-    <tr>
-      <td><b>Capability Boundary</b></td>
-      <td>Handles requests outside interview domain.</td>
-      <td>“Let’s stay focused on your interview—tell me about your last project.”</td>
-    </tr>
-
-  </tbody>
-</table>
